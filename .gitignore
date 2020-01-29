@@ -23,3 +23,7 @@
 
 # databaseの設定は公開しない
 /config/database.yml
+
+# solargraph, rubocopの設定ファイル
+/.solargraph.yml
+/.rubocop.yml

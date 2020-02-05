@@ -1,3 +1,5 @@
+require 'net/http'
+
 class WikiController < ApplicationController
   def index
     render json: { message: 'index_test' }
@@ -6,12 +8,19 @@ class WikiController < ApplicationController
   def show
     title = params[:id]
     api_url = 'https://ja.wikipedia.org/w/api.php'
+    # params = URI.encode_www_form(
+    #   action: 'query',
+    #   format: 'json',
+    #   prop: 'revisions',
+    #   titles: title,
+    #   rvprop: 'content'
+    # )
     params = URI.encode_www_form(
       action: 'query',
       format: 'json',
-      prop: 'revisions',
+      prop: 'extracts',
       titles: title,
-      rvprop: 'content'
+      explaintext: 1
     )
     uri = URI.parse "#{api_url}?#{params}"
 

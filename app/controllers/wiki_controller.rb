@@ -6,6 +6,7 @@ class WikiController < ApplicationController
   end
 
   def show
+    # ページID、タイトル、本文がほしい
     title = params[:id]
     api_url = 'https://ja.wikipedia.org/w/api.php'
     # params = URI.encode_www_form(
@@ -49,6 +50,6 @@ class WikiController < ApplicationController
       @result = e.message
     end
 
-    render json: @result
+    render json: {title: @result['query']['pages'].first[1]['title'], content: @result['query']['pages'].first[1]['extract'] }
   end
 end

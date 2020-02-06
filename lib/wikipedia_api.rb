@@ -1,7 +1,7 @@
-class WikipediaAPI
+class WikipediaApi
   class << self
     def get_request(title:)
-      uri = parse_api_url title
+      uri = parse_api_url title: title
 
       https = Net::HTTP.new uri.host, uri.port
       https.use_ssl = true

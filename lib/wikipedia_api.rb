@@ -1,5 +1,6 @@
 class WikipediaApi
   class << self
+    # WikipediaAPIへリクエストを送る
     def get_request(title:)
       uri = parse_api_url title: title
 
@@ -32,6 +33,7 @@ class WikipediaApi
 
     private
 
+    # WikipediaAPIを叩くURLを作成する
     def parse_api_url(title:)
       api_url = 'https://ja.wikipedia.org/w/api.php'
       params = URI.encode_www_form(
